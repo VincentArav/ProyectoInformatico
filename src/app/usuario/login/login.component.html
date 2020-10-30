@@ -1,0 +1,39 @@
+
+<div class="login-page">
+    <mat-card>
+      <mat-card-title style="text-align:center;">LOGIN</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="form" class="custom-form" (ngSubmit) = "onClickSubmit()">
+          <mat-form-field>
+            <input
+            matInput
+            type="text"
+            class="fortextbox"
+            name="email"
+            placeholder="Rut"
+            formControlName="rut_usuario"        
+          >
+          <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+            matInput 
+            class="fortextbox"
+            type="password"
+            name="contrasena" 
+            placeholder="Contraseña"
+            formControlName="contrasena_login"
+          >
+          <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <button
+            mat-raised-button
+            color="primary"
+            class="login-button" 
+            [disabled] ="!loginform.valid">Entrar</button>
+          </mat-form-field>          
+          </form>
+      </mat-card-content>    
+    </mat-card>   
+  </div>

@@ -1,0 +1,158 @@
+<app-desing></app-desing>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+    crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2019.css"><style type="text/css">
+    <style>
+    body,p,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+    </style>
+    <style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto 150px 50px 20px;
+        grid-gap: 10px;
+        background-color:white;
+        padding: 3px;
+    }
+    
+    .grid-container > div {
+        background-color: rgba(255, 255, 255, 255);
+        border: 1px solid black;
+        text-align: center;
+        font-size: 30px;
+    }
+    .comment{
+        background-color: #e1e1e1;
+        border: 3px solid black;
+        height: 220px;
+        width: 700px;
+        border-radius: 4px;
+    }
+    </style>
+
+    <title>ENCARGO DE MATERIALES BEEP BOOP</title>
+</head>
+
+
+
+<body>
+
+  <div class="">
+    <div>
+      <div class="text-center flex justify-center">
+        <div class="text-left p-2">
+          <div class="wrapper border border-gray-400 rounded-lg p-4" style="background-color: rgb(240, 240, 240); width: 70%; height:70%;">    
+            <div>  
+              <div class="title">
+                <h1 style="color:black">Solicitud de Materiales</h1>
+              </div>
+              <div style="margin-bottom: 3%; height: 1px; border: 1px solid black; border-radius: 1px;"></div>
+
+              
+              <div class="row" style="background-color: green;">
+                <div class="col" style="margin-left: 0%;">
+                  <!-- Material a pedir -->
+
+                  <div class="col">Material:
+                    <div class="py-1 pb-5 ">
+                      <form [formGroup]="form">
+                        <mat-form-field style="background-color: rgb(250, 250, 250); border: 1px solid black; border-radius: 3px;" >
+                          <mat-select formControlName="nombre_m"  placeholder= "Material" (optionSelected)="onSelectionChange($event)" >
+                            <mat-option id="rut-1" *ngFor="let option of Lista1.data" [value]="option.nombre_m">
+                              {{option.nombre_m}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </form> 
+                    </div>
+                  </div>
+
+                  <!-- Cantidad de material a pedir -->
+                  <div class="col">Cantidad:
+                    <div class="py-1 pb-5 ">
+                      <form [formGroup]="form">
+                        <mat-form-field style="background-color: rgb(250, 250, 250); border: 1px solid black; border-radius: 3px;" >
+                          <mat-select formControlName="cantidad_m"  placeholder = "Cantidad" (optionSelected)="onSelectionChange($event)">
+                            <mat-option *ngFor="let hora of cantidad" [value]="hora.value">
+                              {{hora.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </form>          
+                    </div>        
+                  </div>
+                </div>
+
+                <!-- Destino de material a oedir-->
+                <div class="col">
+                  <div class="col " >Destino:
+                    <div class=" py-1 pb-5 ">
+                      <form [formGroup]="form">
+                        <mat-form-field style="background-color: rgb(250, 250, 250); border: 1px solid black; border-radius: 3px;" >
+                          <mat-select formControlName="lugar_m"  placeholder= "Destino" (optionSelected)="onSelectionChange($event)" class="rut">
+                            <mat-option>None</mat-option>
+                            <mat-option id="rut-1" *ngFor="let option of Lista2.data" [value]="option.nombre_l">
+                              {{option.nombre_l}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </form>          
+                    </div>      
+                  </div>
+
+                  <div class="col " >Área:
+                    <div class=" py-1 pb-5 ">
+                      <form [formGroup]="form">
+                        <mat-form-field style="background-color: rgb(250, 250, 250); border: 1px solid black; border-radius: 3px;" >
+                          <mat-select formControlName="area_m"  placeholder= "Área" (optionSelected)="onSelectionChange($event)" class="rut">
+                            <mat-option>None</mat-option>
+                            <mat-option id="rut-1" *ngFor="let option of Lista2.data" [value]="option.area_l">
+                              {{option.area_l}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </form>          
+                    </div>      
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row" style="background-color: aqua;" >
+                <div>
+                  <div class="msg">
+                    <form [formGroup]="form">
+                      <textarea cols="5" rows="5" formControlName="descripcion_r" placeholder="Añadir comentario adicional" style="background-color: rgb(250, 250, 250);"></textarea>  
+                    </form>
+                    <div class = "col">
+                      <form [formGroup]="form">               
+                        <button id="boton_enviar" (click)='mostrar_Registro()'>Enviar</button>                
+                      </form>
+                    </div>
+                    <div class = "col">  <button   id="boton_cancelar" (click)='mostrar_cancelar()'>Cancelar</button> </div>     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

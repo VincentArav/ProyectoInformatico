@@ -88,11 +88,21 @@
                     <mat-form-field appearance="fill">
                       <mat-label>Cantidad</mat-label>
                       <input [(ngModel)]="cantidad[j]" matInput placeholder="Cantidad" type="number" name="cantidad">
-                    </mat-form-field>                  
+                    </mat-form-field>
+                    
+                    <mat-form-field appearance="fill">
+                      <mat-label>Especificaciones</mat-label>
+                      <textarea matInput placeholder="Especificación opcional" [(ngModel)]="especificaciones[j]"></textarea>
+                    </mat-form-field>
                     <br>
                   
                   
                   </section>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Comentario</mat-label>
+                    <input [(ngModel)]="comentario_orden" matInput placeholder="Comentario adicional" type="text" name="Comentario">
+                  </mat-form-field>
 
               </div>
             </div>  

@@ -114,9 +114,11 @@ app.post('/ADDSolicitud/',bodyParser.json(),(req,res)=>{
     let cantidad = datos.cantidad;
     let materiales = datos.materiales;
     let destino = datos.destino;
+    let especificaciones = datos.especificaciones;
+    let comentario = datos.comentario_orden;
 
-    const post_query=`INSERT INTO orden (etapa, creador, destino)
-    VALUES (1, '${rut}','${destino}') RETURNING id`;
+    const post_query=`INSERT INTO orden (etapa, creador, destino, comentario)
+    VALUES (1, '${rut}','${destino}', '${comentario}') RETURNING id`;
     client.query(post_query,(err,result)=>{
         console.log(typeof(cantidad))
         if(err){
@@ -128,8 +130,8 @@ app.post('/ADDSolicitud/',bodyParser.json(),(req,res)=>{
             // })
             for (let i=0; i<cantidad.length; i++){
                 
-                const post_query2=`INSERT INTO contiene (orden, material, cantidad)
-                            VALUES ('${result.rows[0].id}', '${materiales[i]}', '${cantidad[i]}')`;
+                const post_query2=`INSERT INTO contiene (orden, material, cantidad, comentario)
+                            VALUES ('${result.rows[0].id}', '${materiales[i]}', '${cantidad[i]}', '${especificaciones[i]}')`;
             
             client.query(post_query2, (err, result2)=>{
                 if(err) {

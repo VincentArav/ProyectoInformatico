@@ -21,6 +21,7 @@ export class SolicitudComponent implements OnInit {
   form: FormGroup;
   fecha: string;
   destino: string;
+  comentario_orden: string;
   public Lista1: any;
   public Lista2: any;
   public lista_materiales: Material[] = [];
@@ -28,6 +29,7 @@ export class SolicitudComponent implements OnInit {
   arreglo = [];
   cantidad = [];
   material = [];
+  especificaciones = [];
 
   constructor(private http:HttpClient, private route:ActivatedRoute, private router:Router) { 
     this.getMateriales();
@@ -45,13 +47,20 @@ export class SolicitudComponent implements OnInit {
     this.arreglo.push("");
     this.cantidad.push("");
     this.material.push("");
-
+    this.especificaciones.push("");
+    console.log(this.comentario_orden);
   }
 
   enviar_orden(){
       console.log(this.material)
       console.log(this.cantidad)
-      this.http.post('http://localhost:8000/ADDSolicitud/', {rut:this.rut, cantidad:this.cantidad, materiales:this.material, destino:this.destino}).subscribe(
+      this.http.post('http://localhost:8000/ADDSolicitud/', {
+        rut:this.rut, 
+        cantidad:this.cantidad, 
+        materiales:this.material,
+        destino:this.destino, 
+        especificaciones:this.especificaciones,
+        comentario_orden:this.comentario_orden}).subscribe(
       (response)=>{
         console.log(response);
       }

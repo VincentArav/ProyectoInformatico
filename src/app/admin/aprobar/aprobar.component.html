@@ -1,0 +1,76 @@
+<app-desing-admin></app-desing-admin>>
+<div i="contenedorRevisar-TM">
+    <div class="wrapper">
+        <div class="title">
+            <h1>Ordenes</h1>
+        </div>
+        <br>
+        <div class="contact-form">
+            <div class="input-fields">
+                <div>
+                    <mat-form-field [formGroup] = "Form2" appearance="fill">
+                        <mat-select formControlName="id_orden"  placeholder= "N° de Orden" >
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let option of Lista.data.rows" [value]="option.id">
+                                {{option.id}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                    <div class = "col">
+                        <form [formGroup]="Form2">								
+                          <button id="boton_enviar" (click)='onSubmit()'>Revisar</button>								
+                        </form>
+                        <form [formGroup]="Form2">								
+                          <button id="boton_enviar" (click)='Aprobar()'>Aprobar</button>								
+                        </form>
+                        <form [formGroup]="Form2">								
+                            <button id="boton_enviar" (click)='Rechazar()'>Rechazar</button>								
+                        </form>
+                        
+                    </div>                 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="errorMensaje">
+	<div *ngIf ="auxiliar && Lista_1.data.length==0 "class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+	  <h1 class="w3-margin w3-xlarge">NO EXISTEN REGISTROS</h1>
+	</div>
+  </div>
+<div *ngIf="auxiliar && Lista_1.data.length>0">
+    <mat-table [dataSource]="Lista_1.data" class="Tabla-RTM">
+        <ng-container matColumnDef="ID">
+            <mat-header-cell *matHeaderCellDef class="tam"> N° Orden </mat-header-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.id}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="NombreCompleto">
+            <mat-header-cell *matHeaderCellDef class="tam"> Solicitante </mat-header-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.nombre_usuario}} {{Pac.apellido_usuario}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Material">
+            <mat-header-cell *matHeaderCellDef class="tam"> Material </mat-header-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.nombre}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Cantidad">
+            <mat-header-cell *matHeaderCellDef class="tam"> Cantidad </mat-header-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.cantidad}} unidades </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Comentario">
+            <mat-header-cell *matHeaderCellDef class="tam"> Comentario </mat-header-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.comentario}} </mat-cell>
+        </ng-container>  
+
+        <ng-container matColumnDef="Fecha">
+            <mat-header-cell *matHeaderCellDef class="tam"> Fecha Solicitud </mat-header-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.fecha}} </mat-cell>
+        </ng-container> 
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+

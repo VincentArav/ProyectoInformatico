@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute,Router, NavigationStart } from '@angular/router';
 import Swal from 'sweetalert2'
 
-interface Cantidad{
+interface Cantidad{/* Igual que una struct */
   value: string;
   viewValue: string;
 }
@@ -16,7 +16,7 @@ interface Cantidad{
   templateUrl: './add-material.component.html',
   styleUrls: ['./add-material.component.css']
 })
-export class AddMaterialComponent implements OnInit {
+export class AddMaterialComponent implements OnInit { /* Aqui les doy valores */
   cantidad: Cantidad[] = [
     {value: '1', viewValue: '1'},
     {value: '2', viewValue: '2'},
@@ -48,7 +48,7 @@ export class AddMaterialComponent implements OnInit {
   public Lista1: any;
   constructor(private http:HttpClient, private route:ActivatedRoute, private router:Router) { 
     this.getMateriales();
-    this.fecha= new Date().toLocaleDateString('es-CL');
+    this.fecha= new Date().toLocaleDateString('es-CL'); /* Es para obtener la fecha del PC */
   }
 
   ngOnInit() {
@@ -75,7 +75,7 @@ export class AddMaterialComponent implements OnInit {
     console.log(this.Lista1)
     */
   }
-  mostrar_Registro(): void {
+  mostrar_Registro(): void { /* Es para mostrar un mensaje de apruebo */
     Swal.fire({
       title: '¿Está seguro que desea enviar la solicitud?',
       text: "No podrá realizar cambios!",

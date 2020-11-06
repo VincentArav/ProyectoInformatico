@@ -40,6 +40,23 @@ app.post('/login', bodyParser.json(),(req,res)=>{
     });
 });
 
+/* Login Area de Gestion*/
+app.post('/login_adm', bodyParser.json(),(req,res)=>{
+    var rut=req.body.rut_usuario
+    var contrasena=req.body.contrasena_login
+    const select_query= `SELECT * FROM usuarios WHERE rut_usuario=$1 AND password_usuario=$2`;
+    client.query(select_query,[rut, contrasena],(err,result)=>{
+        if(err){
+            console.log(err);
+            res.status(500).send('Error');
+        }else{
+            res.json({
+                data: result
+            })
+        }
+    });
+});
+
 /* Añadir Material */
 app.post('/ADDMaterial/:id',bodyParser.json(),(req,res)=>{ 
     var id = req.params.id;
@@ -61,6 +78,22 @@ app.post('/ADDMaterial/:id',bodyParser.json(),(req,res)=>{
 
 /* Desing */
 app.get('/nombreUsuario/:id',(req,res)=>{
+    var id=req.params.id;
+    const select_query=`SELECT UPPER(nombre_usuario) as nombre_usuario, UPPER(apellido_usuario) as apellido_usuario FROM usuarios M WHERE M.rut_usuario=$1`;
+    client.query(select_query,[id],(err,result)=>{
+        if(err){
+            return res.send(err)
+        }else{
+            console.log(result);
+            return res.json({
+                data: result
+            })
+        }
+    });
+});
+
+/* Desing Admin */
+app.get('/datosUser/:id',(req,res)=>{
     var id=req.params.id;
     const select_query=`SELECT UPPER(nombre_usuario) as nombre_usuario, UPPER(apellido_usuario) as apellido_usuario FROM usuarios M WHERE M.rut_usuario=$1`;
     client.query(select_query,[id],(err,result)=>{
@@ -151,6 +184,114 @@ app.post('/ADDSolicitud/',bodyParser.json(),(req,res)=>{
        }
    });    
 });
+
+/* Aprobar solicitud */
+app.get('/ordenes',(req,res)=>{//REVISAR TRATAMIENTO 
+    const select_query2=`SELECT orden.id, usuarios.nombre_usuario, usuarios.apellido_usuario FROM orden JOIN usuarios ON orden.creador = usuarios.rut_usuario WHERE orden.etapa = 1`;//este parametro no lo esta leyendo bien
+    client.query(select_query2,(err,result)=>{ //al dejar id, le estoy pasando el valor
+        console.log("HOLI")
+        //console.log(result);
+        if(err){
+            return res.send(err)
+        }else{
+            console.log(select_query2);
+            console.log(result);            
+            return res.json({
+                data: result
+            })
+        }  
+    });
+});
+
+app.get('/ListadoMateriales/:id',(req,res)=>{
+    var id =req.params.id;
+    console.log(id);
+    const select_query2 =`SELECT orden.id, to_char(orden.fecha,'YYYY-MM-DD') as fecha, usuarios.nombre_usuario, usuarios.apellido_usuario, material.nombre, contiene.cantidad, contiene.comentario FROM orden JOIN usuarios ON orden.creador = usuarios.rut_usuario JOIN contiene ON orden.id = contiene.orden JOIN material ON contiene.material = material.id WHERE orden.id = $1;`
+    client.query(select_query2,[id],(err,result)=>{
+          console.log(result);
+        if(err){
+            return res.send(err)
+        }else{
+           console.log(select_query2);
+            console.log(result);  
+                     
+            return res.json({
+                data: result.rows
+            })
+        }
+    });
+});
+
+app.post('/Aprobar',bodyParser.json(),(req,res)=>{//dar-alta-medica
+    var id=req.params.id;
+    const select_query1=`UPDATE orden SET etapa = 2 WHERE id = '${req.body.id_orden}';`//este parametro no lo esta leyendo bien
+    client.query(select_query1,(err,result)=>{ //al dejar id, le estoy pasando el valor
+        console.log("Listado Pacientes")
+        console.log(result);
+        if(err){
+            return res.send(err)
+            console.log("HAY UN ERROR")
+        }else{
+            console.log(result);
+            return res.json({
+                data: result
+        })
+        } 
+    });
+    console.log("RETURN");
+});
+
+app.post('/Rechazar',bodyParser.json(),(req,res)=>{//dar-alta-medica
+    var id=req.params.id;
+    const select_query1=`UPDATE orden SET etapa = 3 WHERE id = '${req.body.id_orden}';`//este parametro no lo esta leyendo bien
+    client.query(select_query1,(err,result)=>{ //al dejar id, le estoy pasando el valor
+        console.log("Listado Pacientes")
+        console.log(result);
+        if(err){
+            return res.send(err)
+            console.log("HAY UN ERROR")
+        }else{
+            console.log(result);
+            return res.json({
+                data: result
+        })
+        } 
+    });
+    console.log("RETURN");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

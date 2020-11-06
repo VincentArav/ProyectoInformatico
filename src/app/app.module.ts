@@ -26,6 +26,11 @@ import { LoginComponent } from './usuario/login/login.component';
 import { DisenoInterfazComponent } from './usuario/diseno-interfaz/diseno-interfaz.component';
 import { DesingComponent } from './usuario/desing/desing.component';
 import { SolicitudComponent } from './usuario/solicitud/solicitud.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+import { DesingAdminComponent } from './admin/desing-admin/desing-admin.component';
+import { DisenoAdminComponent } from './admin/diseno-admin/diseno-admin.component';
+import { AprobarComponent } from './admin/aprobar/aprobar.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,12 @@ import { SolicitudComponent } from './usuario/solicitud/solicitud.component';
     LoginComponent,
     DisenoInterfazComponent,
     DesingComponent,
-    SolicitudComponent
+    SolicitudComponent,
+    AdminComponent,
+    LoginAdminComponent,
+    DesingAdminComponent,
+    DisenoAdminComponent,
+    AprobarComponent
   ],
   imports: [
     BrowserModule,

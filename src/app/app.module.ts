@@ -31,6 +31,7 @@ import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 import { DesingAdminComponent } from './admin/desing-admin/desing-admin.component';
 import { DisenoAdminComponent } from './admin/diseno-admin/diseno-admin.component';
 import { AprobarComponent } from './admin/aprobar/aprobar.component';
+import { MatSelectFilterModule } from 'mat-select-filter';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { AprobarComponent } from './admin/aprobar/aprobar.component';
     MatButtonModule,
     MatCheckboxModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectFilterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

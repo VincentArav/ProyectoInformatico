@@ -73,15 +73,19 @@
                     </mat-select>
                   </mat-form-field>
 
-              
+
                   <section *ngFor="let i of arreglo; let j = index">
-                  
+                      
                     <mat-form-field appearance="fill" style="margin-right: 3%;">
                       <mat-label>Lista de materiales</mat-label>
                       <mat-select [(ngModel)]="material[j]" >
-                        <mat-option ngDefaultControl *ngFor="let material1 of lista_materiales"  [(value)]="material1.value" name="material_nombre">
+
+                      <mat-select-filter [placeholder]="'Buscar materiales'" [displayMember]="'viewValue'" [array]="lista_materiales" (filteredReturn)="filtrados =$event"></mat-select-filter>
+
+                        <mat-option ngDefaultControl *ngFor="let material1 of filtrados"  [(value)]="material1.value" name="material_nombre">
                           {{material1.viewValue}}
                         </mat-option>
+
                       </mat-select>
                     </mat-form-field>
                   

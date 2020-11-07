@@ -25,6 +25,7 @@ export class SolicitudComponent implements OnInit {
   public Lista1: any;
   public Lista2: any;
   public lista_materiales: Material[] = [];
+  public filtrados: any;
 
   arreglo = [];
   cantidad = [];
@@ -77,8 +78,9 @@ export class SolicitudComponent implements OnInit {
     for(let i of aux){
       console.log(typeof(this.lista_materiales));
       this.lista_materiales.push({value: i.id, viewValue: i.nombre});
-      console.log(i.id);
+      console.log(i);
     }
+    this.filtrados = this.lista_materiales.slice();
     console.log(this.lista_materiales)
   }
   async getDestino(){

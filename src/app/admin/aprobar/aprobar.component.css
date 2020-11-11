@@ -9,7 +9,7 @@
 }
 
 body{
-  background: url('https://i.imgur.com/kk76J5I.jpg') no-repeat top center;
+  background: url('https://cdn9.dissolve.com/p/D1220_3_703/D1220_3_703_1200.jpg') no-repeat top center;
   background-size: cover;
   height: 100vh;
   font-size: large;
@@ -25,6 +25,7 @@ body{
   background: rgba(119, 228, 76, 0.95);
   padding: 17px;
   border-radius: 5px;
+  border: 1px solid rgb(60, 60, 60);
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   font-size: 130%;
 }
@@ -98,14 +99,14 @@ body{
 
 #boton_enviar{
     text-decoration: none;
-    padding: 10px;
+    padding: 5px;
     width: 100%;
     font-weight: 600;
     font-size: 20px;
     color: #ffffff;
     background-color: #28b40c;
     border-radius: 6px;
-    border: 2px solid #048f04;
+    border: 2px solid #036903;
 
 }
 
@@ -132,11 +133,14 @@ body{
 
 .Tabla-RTM{
   position: absolute;
-  top: 62%;
-  left: 10%;
-  width: 80%;
+  top: 47.7%;
+  left: 15%;
+  width: 70%;
   background: rgba(69, 227, 233, 0.7);
   font-size: 110%;
+  border-radius: 5px;
+  border: 1px solid rgb(60, 60, 60);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 #boton_cancelar{
   text-decoration: none;

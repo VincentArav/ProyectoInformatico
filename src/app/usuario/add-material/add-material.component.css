@@ -9,7 +9,7 @@
 }
 
 body{
-  background: url('https://previews.123rf.com/images/perig76/perig761507/perig76150700071/42430964-view-of-a-worker-and-architect-watching-some-details-on-a-construction.jpg') no-repeat top center;
+  background: url('https://cdn9.dissolve.com/p/D1220_3_703/D1220_3_703_1200.jpg') no-repeat top center;
   background-size: cover;
   height: 100vh;
   font-size: initial;
@@ -114,8 +114,8 @@ body{
 
 #boton_enviar{
   text-decoration: none;
-  padding: 10px;
-  width: 95%;
+  padding: 5px;
+  width: fit-content;
   font-weight: 600;
   font-size: 20px;
   color: #ffffff;
@@ -130,8 +130,8 @@ body{
 }
 #boton_cancelar{
   text-decoration: none;
-  padding: 10px;
-  width: 90%;
+  padding: 5px;
+  width: fit-content;
   font-weight: 600;
   font-size: 20px;
   color: #ffffff;

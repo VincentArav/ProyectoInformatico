@@ -1,4 +1,4 @@
-<app-desing-admin></app-desing-admin>>
+<app-diseno-admin></app-diseno-admin>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,7 +64,7 @@
                       <div class="input-fields">
                         <form [formGroup]="form">
                           <h4 style="color: black; margin-bottom: 2%; margin-top: 5%;">Nombre del material:</h4>
-                          <input type="text" formControlName="nombre_r" placeholder="Ingresar nombre" style="color: black; border: 1px solid black; border-radius: 3px; width: 60%; padding-left: 1%;">
+                          <input type="text" formControlName="nombre_r" placeholder="Ingresar nombre" style="color: black; border: 1px solid black; border-radius: 3px; width: 93.5%; padding-left: 1%;">
                         </form>
                       </div>
                     </div>
@@ -83,15 +83,14 @@
 
               </div>
 
-              <div class="row" style="margin-top: 3%;">
+              <div class="row" style="margin-top: 2%;">
 
-                <div class = "col">                 
-                  <button id="boton_enviar" (click)='mostrar_Registro()'>Enviar</button>               
+                <div class = "col " style="text-align:right;">                 
+                  <button id="boton_enviar" style="width: 40%; margin-right: 10%;" (click)='mostrar_Registro()'>Enviar</button>               
                 </div>
 
-                <div class = "col">  
-                  <button id="boton_cancelar" (click)='mostrar_cancelar()'>Cancelar                        
-                  </button> 
+                <div class = "col" >  
+                  <button id="boton_cancelar" style="width: 40%;" (click)='mostrar_cancelar()'>Cancelar</button> 
                 </div>     
 
               </div>    

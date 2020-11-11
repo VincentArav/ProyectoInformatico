@@ -1,4 +1,4 @@
-<app-desing></app-desing>
+<app-diseno-interfaz></app-diseno-interfaz>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +56,7 @@
   <div class="">
       <div class="text-center flex justify-center">
         <div class="text-left">
-          <div class="wrapper border border-gray-400 rounded-lg " style="background-color: rgb(240, 240, 240); width: 70%;">     
+          <div class="wrapper border border-gray-400 rounded-lg " style="background-color: rgb(240, 240, 240); width: 70%; margin-top: 7%; overflow: auto;">     
               <div class="title">
                 <h1 style="color:black">Solicitud de Materiales</h1>
               </div>
@@ -74,9 +74,9 @@
                   </mat-form-field>
 
 
-                  <section *ngFor="let i of arreglo; let j = index">
+                  <section *ngFor="let i of arreglo; let j = index" style="">
                       
-                    <mat-form-field appearance="fill" style="margin-right: 3%;">
+                    <mat-form-field appearance="fill" style="margin-right: 3%; ">
                       <mat-label>Lista de materiales</mat-label>
                       <mat-select [(ngModel)]="material[j]" >
 
@@ -111,15 +111,15 @@
               </div>
             </div>  
             <button mat-button (click)="anadir_material()" style="background-color: rgb(45, 192, 53); margin-right: 2%; width: 15%; border: 1px solid darkgreen;">
-              <h4 style="font-st">Añadir Material</h4>
+              <h4 style="font-st; color: white;">Añadir Material</h4>
             </button>
 
-            <button mat-button (click)="mostrar_cancelar()" style="background-color: rgb(233, 23, 23); width: 15%">
-              <h4>Cancelar</h4>
+            <button mat-button (click)="mostrar_cancelar()" style="background-color: rgb(233, 23, 23); border: 1px solid rgb(110, 23, 23); width: 15%">
+              <h4 style="color: white;">Cancelar</h4>
             </button>       
 
             <button class="pull-right" mat-button (click)="mostrar_Registro()" style="background-color: rgb(28, 113, 240); margin-right: 20px; width: 25%; border: 1px solid rgb(18, 18, 223);">
-              <h4>Enviar Orden</h4>
+              <h4 style="color: white;">Enviar Orden</h4>
             </button>
 
           </div>

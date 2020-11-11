@@ -1,43 +1,85 @@
-<app-desing-admin></app-desing-admin>>
+<app-diseno-admin></app-diseno-admin>
+
+<body>
+    
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: center;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+        .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+        .fa-anchor,.fa-coffee {font-size:200px}
+        .w3-2019-evening-blue{color:#fff;background-color:#4f5055}
+        </style>
+
 <div i="contenedorRevisar-TM">
-    <div class="wrapper">
+    <div class="wrapper" style="background-color: rgb(240, 240, 240); width: 70%;">
+
         <div class="title">
-            <h1>Ordenes</h1>
+            <h1 style="color: black;">Órdenes</h1>
         </div>
+        <div style="margin-bottom: 3%; height: 1px; border: 1px solid black; border-radius: 1px;"></div>
+
         <br>
-        <div class="contact-form">
-            <div class="input-fields">
-                <div>
-                    <mat-form-field [formGroup] = "Form2" appearance="fill">
-                        <mat-select formControlName="id_orden"  placeholder= "N° de Orden" >
-                            <mat-option>None</mat-option>
-                            <mat-option *ngFor="let option of Lista.data.rows" [value]="option.id">
-                                {{option.id}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+        <div >
+            <div class="row" style=" text-align: left;">
+                <div class="col">
+                    <div style="font-size: 20px;">
+                        <mat-form-field [formGroup] = "Form2" appearance="fill" style="width:46%">
+                            <mat-select formControlName="id_orden"  placeholder= "N° de Orden">
+                                <mat-option>None</mat-option>
+                                <mat-option *ngFor="let option of Lista.data.rows" [value]="option.id">
+                                    {{option.id}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
                 </div>
-                    <div class = "col">
-                        <form [formGroup]="Form2">								
-                          <button id="boton_enviar" (click)='onSubmit()'>Revisar</button>								
-                        </form>
-                        <form [formGroup]="Form2">								
-                          <button id="boton_enviar" (click)='Aprobar()'>Aprobar</button>								
-                        </form>
-                        <form [formGroup]="Form2">								
-                            <button id="boton_enviar" (click)='Rechazar()'>Rechazar</button>								
-                        </form>
-                        
-                    </div>                 
+            </div>
+
+            <div class="row" style="">
+
+                <div class="col" style="width: 33%;">
+                    <form [formGroup]="Form2">								
+                        <button id="boton_enviar" (click)='onSubmit()' style=" vertical-align: bottom; width:70%; background-color: rgb(28, 113, 240); border: 2px solid rgb(28, 60, 140); color: white; " >Revisar</button>								
+                    </form>
+                </div>
+
+                <div class = "col" style="width: 33%;">
+                    <form [formGroup]="Form2" style="text-align: right;">								
+                      <button id="boton_enviar" (click)='Aprobar()' style=" vertical-align: bottom; width: 70%; color: white;">Aprobar</button>								
+                    </form>
+                </div>
+                
+                <div class = "col" style="width: 33%;">
+                    <form [formGroup]="Form2" style="text-align: center;">								
+                        <button id="boton_enviar" (click)='Rechazar()' style=" vertical-align: bottom; width:70%; background-color: rgb(233, 23,23); border: 2px solid rgb(110, 20, 20); color: white;" >Rechazar</button>								
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
+
 <div class="errorMensaje">
-	<div *ngIf ="auxiliar && Lista_1.data.length==0 "class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-	  <h1 class="w3-margin w3-xlarge">NO EXISTEN REGISTROS</h1>
+    <div *ngIf ="auxiliar && Lista_1.data.length==0 "class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+	    <h1 class="w3-margin w3-xlarge">NO EXISTEN REGISTROS</h1>
 	</div>
-  </div>
+</div>
+
 <div *ngIf="auxiliar && Lista_1.data.length>0">
     <mat-table [dataSource]="Lista_1.data" class="Tabla-RTM">
         <ng-container matColumnDef="ID">
@@ -73,4 +115,5 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-
+</div>
+</body>

@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Aceptar Compra</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta charset="UTF-8">
-<style>
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2019.css"><style type="text/css">
+      <style>
+      body,p,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+      .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+      .fa-anchor,.fa-coffee {font-size:200px}
+      </style>
+      <style>
+      .grid-container {
+          display: grid;
+          grid-template-columns: auto auto 150px 50px 20px;
+          grid-gap: 10px;
+          background-color:white;
+          padding: 3px;
+      }
+      
+      .grid-container > div {
+          background-color: rgba(255, 255, 255, 255);
+          border: 1px solid black;
+          text-align: center;
+          font-size: 30px;
+      }
+      .comment{
+          background-color: #e1e1e1;
+          border: 3px solid black;
+          height: 220px;
+          width: 700px;
+          border-radius: 4px;
+      }
+      </style>
   
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-  }
+      <title>AÑADIENDO MATERIALES BOPBIP</title>
+  </head>
   
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-  body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-  .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-  .fa-anchor,.fa-coffee {font-size:200px}
-  .w3-2019-evening-blue{color:#fff;background-color:#4f5055}
-  </style>
-
-<!--Botones -->
-<div class="w3-top">
-  <div class="w3-bar w3-2019-evening-blue w3-card w3-left-align w3-large">
-
-    <button class="w3-button w3-gray w3-hover-blue" (click)="onClick_AddMaterial()">Añadir Material</button>
-    <button class="w3-button w3-black w3-hover-blue" (click)="onClick_Aprobar()">Solicitudes</button>
-
-        <!--
-    <a href="{{route('homepage')}}" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Inicio</a>
-    <a href="/medicamentos" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Medicamentos</a>
-    <a href="/tramites" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Trámites</a>
-    -->
     
-    <div class="w3-right w3-hide-small">
-      <button class="w3-button w3-red w3-hover-orange" (click) ="onClick_Cerrar()">Cerrar Sesión</button>
+  <!--Botones -->
+    <div class="w3-top">
+      <div class="w3-bar w3-2019-evening-blue w3-card w3-left-align w3-large">
+        <button class="w3-button w3-gray w3-hover-blue" (click)="onClick_AddMaterial()">Añadir Material</button>
+        <button class="w3-button w3-black w3-hover-blue" (click)="onClick_Aprobar()">Solicitudes</button>
+      
+              <!--
+              <a href="{{route('homepage')}}" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Inicio</a>
+              <a href="/medicamentos" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Medicamentos</a>
+              <a href="/tramites" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Trámites</a>
+              -->    
+        <div class="w3-right w3-hide-small">
+          <button class="w3-button w3-red w3-hover-orange" (click) ="onClick_Cerrar()">Cerrar Sesión</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+
 </html>

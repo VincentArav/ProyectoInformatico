@@ -24,5 +24,8 @@ export class DisenoAdminComponent implements OnInit {
   onClick_Cerrar(){
     this.router.navigate(['/app-inicio'])
   }
+  onClick_Estado(){
+    this.router.navigate(['/app-mostrar-orden/'+this.rut])
+  }
 
 }

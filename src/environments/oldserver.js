@@ -165,7 +165,7 @@ app.post('/ADDSolicitud/',bodyParser.json(),(req,res)=>{
                 
                 const post_query2=`INSERT INTO contiene (orden, material, cantidad, comentario)
                             VALUES ('${result.rows[0].id}', '${materiales[i]}', '${cantidad[i]}', '${especificaciones[i]}')`;
-                console.log(post_query);
+            
             client.query(post_query2, (err, result2)=>{
                 if(err) {
                     console.log("error en contiene");
@@ -187,7 +187,7 @@ app.post('/ADDSolicitud/',bodyParser.json(),(req,res)=>{
 
 /* Aprobar solicitud */
 app.get('/ordenes',(req,res)=>{//REVISAR TRATAMIENTO 
-    const select_query2=`SELECT orden.id, persona.nombre, persona.apellido FROM orden JOIN persona ON orden.creador = persona.rut WHERE orden.etapa = 1 ORDER BY orden.id ASC`;//este parametro no lo esta leyendo bien
+    const select_query2=`SELECT orden.id, usuarios.nombre_usuario, usuarios.apellido_usuario FROM orden JOIN usuarios ON orden.creador = usuarios.rut_usuario WHERE orden.etapa = 1`;//este parametro no lo esta leyendo bien
     client.query(select_query2,(err,result)=>{ //al dejar id, le estoy pasando el valor
         console.log("HOLI")
         //console.log(result);
@@ -206,10 +206,9 @@ app.get('/ordenes',(req,res)=>{//REVISAR TRATAMIENTO
 app.get('/ListadoMateriales/:id',(req,res)=>{
     var id =req.params.id;
     console.log(id);
-    const select_query2 =`SELECT orden.id, to_char(orden.fecha,'YYYY-MM-DD') as fecha, persona.nombre AS nombre_usuario, persona.apellido, material.nombre, 
-    contiene.cantidad, contiene.comentario 
-    FROM orden JOIN persona ON orden.creador = persona.rut JOIN contiene ON orden.id = contiene.orden 
-    JOIN material ON contiene.material = material.id WHERE orden.id = $1;`
+    const select_query2 =`SELECT orden.id, to_char(orden.fecha,'YYYY-MM-DD') as fecha, usuarios.nombre_usuario, 
+    usuarios.apellido_usuario, material.nombre, contiene.cantidad, contiene.comentario FROM orden JOIN usuarios ON orden.creador = usuarios.rut_usuario
+    JOIN contiene ON orden.id = contiene.orden JOIN material ON contiene.material = material.id WHERE orden.id = $1;`
     client.query(select_query2,[id],(err,result)=>{
           console.log(result);
         if(err){
@@ -263,25 +262,7 @@ app.post('/Rechazar',bodyParser.json(),(req,res)=>{//dar-alta-medica
     console.log("RETURN");
 });
 
-app.get('/ListadoOrdenes/:id',(req,res)=>{
-    var id =req.params.id;
-    console.log(id);
-    const select_query2 =`SELECT orden.id, persona.nombre, persona.apellido, lugar.nombre_l, to_char(orden.fecha,'YYYY-MM-DD') as fecha 
-    FROM orden JOIN persona ON orden.creador = persona.rut JOIN lugar ON orden.destino = lugar.id_l WHERE orden.etapa = $1;`
-    client.query(select_query2,[id],(err,result)=>{
-          console.log(result);
-        if(err){
-            return res.send(err)
-        }else{
-           console.log(select_query2);
-            console.log(result);  
-                     
-            return res.json({
-                data: result.rows
-            })
-        }
-    });
-});
+
 
 
 

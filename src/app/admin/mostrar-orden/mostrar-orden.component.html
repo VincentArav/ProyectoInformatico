@@ -1,0 +1,86 @@
+<app-diseno-admin></app-diseno-admin>
+
+<body>
+    
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: center;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+        .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+        .fa-anchor,.fa-coffee {font-size:200px}
+        .w3-2019-evening-blue{color:#fff;background-color:#4f5055}
+        </style>
+<div i="contenedorRevisar-TM">
+    <div class="wrapper" style="margin-top: 0%;">
+        <div class="title">
+            <h1 style="color: black;">Ver órdenes</h1>
+        </div>
+        <div style="margin-bottom: 3%; height: 1px; border: 1px solid black; border-radius: 1px;"></div>
+        <br>
+        <div class="contact-form">
+            <div class="col" style=" width:100%">
+                    <mat-form-field [formGroup] = "Form2" appearance="fill" style="margin-left: 35%;">
+                        <mat-select formControlName="id_orden"  placeholder= "Estado Orden" >
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let option of estado" [value]="option.value">
+                                {{option.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <div class = "col" style="width: 100%;">
+                        <form [formGroup]="Form2">								
+                          <button id="boton_enviar" style=" vertical-align:bottom; margin-left: 35%; width: 30%;" (click)='onSubmit()'>Revisar</button>								
+                        </form>                        
+                    </div>                 
+            </div>
+        </div>
+    </div>
+
+<div class="errorMensaje">
+	<div *ngIf ="auxiliar && Lista_1.data.length==0 "class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+	  <h1 class="w3-margin w3-xlarge">NO EXISTEN REGISTROS</h1>
+	</div>
+  </div>
+<div *ngIf="auxiliar && Lista_1.data.length>0">
+    <mat-table [dataSource]="Lista_1.data" class="Tabla-RTM" style="background-color:rgb(240, 240, 240); width: 60%; text-align: center; margin-left: 5.5%; margin-top: 0.0322%; border-radius: 5px; border: 1px solid rgb(60, 60, 60);">
+        <ng-container matColumnDef="ID">
+            <mat-header-cell *matHeaderCellDef class="tam"> N° Orden </mat-header-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.id}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="NombreCompleto">
+            <mat-header-cell *matHeaderCellDef class="tam"> Solicitante </mat-header-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.nombre}} {{Pac.apellido}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Destino">
+            <mat-header-cell *matHeaderCellDef class="tam"> Destino </mat-header-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.nombre_l}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Fecha">
+            <mat-header-cell *matHeaderCellDef class="tam"> Fecha Solicitud </mat-header-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.fecha}} </mat-cell>
+        </ng-container> 
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+</div>
+</body>
+

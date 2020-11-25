@@ -28,7 +28,7 @@
     <div class="wrapper" style="background-color: rgb(240, 240, 240); width: 70%;">
 
         <div class="title">
-            <h1 style="color: black;">Órdenes</h1>
+            <h1 style="color: black;">Órdenes Pendientes</h1>
         </div>
         <div style="margin-bottom: 3%; height: 1px; border: 1px solid black; border-radius: 1px;"></div>
 
@@ -59,13 +59,13 @@
 
                 <div class = "col" style="width: 33%;">
                     <form [formGroup]="Form2" style="text-align: right;">								
-                      <button id="boton_enviar" (click)='Aprobar()' style=" vertical-align: bottom; width: 70%; color: white;">Aprobar</button>								
+                      <button id="boton_enviar" (click)='mostrar_Registro()' style=" vertical-align: bottom; width: 70%; color: white;">Aprobar</button>								
                     </form>
                 </div>
                 
                 <div class = "col" style="width: 33%;">
                     <form [formGroup]="Form2" style="text-align: center;">								
-                        <button id="boton_enviar" (click)='Rechazar()' style=" vertical-align: bottom; width:70%; background-color: rgb(233, 23,23); border: 2px solid rgb(110, 20, 20); color: white;" >Rechazar</button>								
+                        <button id="boton_enviar" (click)='mostrar_cancelar()' style=" vertical-align: bottom; width:70%; background-color: rgb(233, 23,23); border: 2px solid rgb(110, 20, 20); color: white;" >Rechazar</button>								
                     </form>
                 </div>
 
@@ -81,7 +81,7 @@
 </div>
 
 <div *ngIf="auxiliar && Lista_1.data.length>0">
-    <mat-table [dataSource]="Lista_1.data" class="Tabla-RTM">
+    <mat-table [dataSource]="Lista_1.data" class="Tabla-RTM" style="background-color: rgb(240, 240, 240);">
         <ng-container matColumnDef="ID">
             <mat-header-cell *matHeaderCellDef class="tam"> N° Orden </mat-header-cell>
             <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.id}} </mat-cell>
@@ -89,7 +89,7 @@
     
         <ng-container matColumnDef="NombreCompleto">
             <mat-header-cell *matHeaderCellDef class="tam"> Solicitante </mat-header-cell>
-            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.nombre_usuario}} {{Pac.apellido_usuario}} </mat-cell>
+            <mat-cell *matCellDef="let Pac" class="tam1"> {{Pac.nombre_usuario}} {{Pac.apellido}} </mat-cell>
         </ng-container>
     
         <ng-container matColumnDef="Material">

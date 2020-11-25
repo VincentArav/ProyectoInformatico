@@ -25,12 +25,15 @@ export class SolicitudComponent implements OnInit {
   public Lista1: any;
   public Lista2: any;
   public lista_materiales: Material[] = [];
+  public lista_destino: Material[] = [];
   public filtrados: any;
 
   arreglo = [];
   cantidad = [];
   material = [];
   especificaciones = [];
+
+  destino_final: number;
 
   constructor(private http:HttpClient, private route:ActivatedRoute, private router:Router) { 
     this.getMateriales();
@@ -55,11 +58,17 @@ export class SolicitudComponent implements OnInit {
   enviar_orden(){
       console.log(this.material)
       console.log(this.cantidad)
+      console.log(this.rut)
+      console.log(this.destino)
+      console.log(this.especificaciones)
+      console.log(this.comentario_orden)
+      console.log(this.lista_destino)
+      console.log(this.destino_final)
       this.http.post('http://localhost:8000/ADDSolicitud/', {
         rut:this.rut, 
         cantidad:this.cantidad, 
         materiales:this.material,
-        destino:this.destino, 
+        destino:this.destino_final, 
         especificaciones:this.especificaciones,
         comentario_orden:this.comentario_orden}).subscribe(
       (response)=>{
@@ -87,6 +96,14 @@ export class SolicitudComponent implements OnInit {
     this.Lista2 = await
     this.http.get(`http://localhost:8000/ListadoLugares`).toPromise();
     console.log(this.Lista2)
+    let aux: any;
+    aux = this.Lista2.data;
+    for(let i of aux){
+      console.log(typeof(this.lista_destino));
+      this.lista_destino.push({value: i.id, viewValue: i.nombre});
+      console.log(i);
+    }
+    //this.filtrados = this.lista_destino.slice();
   }
   
   mostrar_Registro(): void {
@@ -103,7 +120,7 @@ export class SolicitudComponent implements OnInit {
       if (result.value) {
         Swal.fire({
           title:'Registrado!',
-          text:'El nuevo material ha sido registrado exitosamente!',
+          text:'La solicitud ha sido enviada exitosamente!',
           icon:'success',
           confirmButtonColor:'#3085d6',
           confirmButtonText: 'Listo',

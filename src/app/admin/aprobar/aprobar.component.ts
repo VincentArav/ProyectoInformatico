@@ -88,4 +88,47 @@ export class AprobarComponent implements OnInit {
       }
     )    
   }
+  mostrar_Registro(): void { /* Es para mostrar un mensaje de apruebo */
+    Swal.fire({
+      title: '¿Está seguro que desea aprobar esta orden?',
+      text: "No podrá realizar cambios!",
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, enviar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire({
+          title:'Registrado!',
+          text:'La orden ha sido aprobada.',
+          icon:'success',
+          confirmButtonColor:'#3085d6',
+          confirmButtonText: 'Listo',
+        }).then((result1)=>{
+          if(result1.value){
+            this.Aprobar();
+          }
+        })
+      }
+    })
+   }
+
+   mostrar_cancelar(): void {
+    Swal.fire({
+      title: '¿Está seguro que desea rechazar la orden?',
+      text: "No podrá recuperarlos!",
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, rechazar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this.Rechazar();
+      }
+    })
+  }
 }

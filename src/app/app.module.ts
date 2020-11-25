@@ -32,6 +32,7 @@ import { DesingAdminComponent } from './admin/desing-admin/desing-admin.componen
 import { DisenoAdminComponent } from './admin/diseno-admin/diseno-admin.component';
 import { AprobarComponent } from './admin/aprobar/aprobar.component';
 import { MatSelectFilterModule } from 'mat-select-filter';
+import { MostrarOrdenComponent } from './admin/mostrar-orden/mostrar-orden.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MatSelectFilterModule } from 'mat-select-filter';
     LoginAdminComponent,
     DesingAdminComponent,
     DisenoAdminComponent,
-    AprobarComponent
+    AprobarComponent,
+    MostrarOrdenComponent
   ],
   imports: [
     BrowserModule,

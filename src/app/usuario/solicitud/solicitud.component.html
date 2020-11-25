@@ -63,18 +63,18 @@
               <div style="margin-bottom: 3%; height: 1px; border: 1px solid black; border-radius: 1px;"></div>
 
               <div class="row" >
-                <div class="col" style="margin-left: 0%;">
+                <div class="col" style="margin-left: 0%;  width: 100%;">
                   <mat-form-field appearance="fill" style="margin-right: 3%;">
                     <mat-label>Destino</mat-label>
-                    <mat-select [(ngModel)]="destino">            
-                      <mat-option ngDefaultControl *ngFor="let option of Lista2.data" [value]="option.nombre" name="destino_nombre" placeholder="">
-                        {{option.nombre}}
+                    <mat-select [(ngModel)]="destino_final">            
+                      <mat-option ngDefaultControl *ngFor="let option of lista_destino" [value]="option.value" name="destino_nombre" placeholder="">
+                        {{option.viewValue}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
 
 
-                  <section *ngFor="let i of arreglo; let j = index" style="">
+                  <section *ngFor="let i of arreglo; let j = index" style=" width: 100%;">
                       
                     <mat-form-field appearance="fill" style="margin-right: 3%; ">
                       <mat-label>Lista de materiales</mat-label>
@@ -94,7 +94,7 @@
                       <input [(ngModel)]="cantidad[j]" matInput placeholder="Cantidad" type="number" name="cantidad">
                     </mat-form-field>
                     
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill" style="margin-left: 3%;">
                       <mat-label>Especificaciones</mat-label>
                       <textarea matInput placeholder="Especificación opcional" [(ngModel)]="especificaciones[j]"></textarea>
                     </mat-form-field>
@@ -103,7 +103,7 @@
                   
                   </section>
 
-                  <mat-form-field appearance="fill">
+                  <mat-form-field appearance="fill" style="margin-top: 2%;">
                     <mat-label>Comentario</mat-label>
                     <input [(ngModel)]="comentario_orden" matInput placeholder="Comentario adicional" type="text" name="Comentario">
                   </mat-form-field>

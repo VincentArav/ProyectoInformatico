@@ -12,6 +12,7 @@ import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 import { DesingAdminComponent } from './admin/desing-admin/desing-admin.component';
 import { DisenoAdminComponent } from './admin/diseno-admin/diseno-admin.component';
 import { AprobarComponent } from './admin/aprobar/aprobar.component';
+import { MostrarOrdenComponent } from './admin/mostrar-orden/mostrar-orden.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path:'app-solicitud/:id',component:SolicitudComponent},    
   {path:'app-add-material/:id',component:AddMaterialComponent},  
   {path:'app-aprobar/:id',component:AprobarComponent},
+  {path:'app-mostrar-orden/:id',component:MostrarOrdenComponent},
   
   
 ];

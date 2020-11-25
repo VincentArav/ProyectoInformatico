@@ -77,13 +77,13 @@ export class AddMaterialComponent implements OnInit { /* Aqui les doy valores */
   }
   mostrar_Registro(): void { /* Es para mostrar un mensaje de apruebo */
     Swal.fire({
-      title: '¿Está seguro que desea enviar la solicitud?',
+      title: '¿Está seguro que desea agregar el material?',
       text: "No podrá realizar cambios!",
       icon: 'success',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, enviar!',
+      confirmButtonText: 'Si, agregar!',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.value) {
@@ -104,7 +104,7 @@ export class AddMaterialComponent implements OnInit { /* Aqui les doy valores */
 
    mostrar_cancelar(): void {
     Swal.fire({
-      title: '¿Está seguro que desea borrar los datos de la solicitud?',
+      title: '¿Está seguro que desea borrar el formulario?',
       text: "No podrá recuperarlos!",
       icon: 'error',
       showCancelButton: true,

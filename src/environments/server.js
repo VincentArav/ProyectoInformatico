@@ -303,7 +303,7 @@ app.post('/NuevoUsuario/:id',bodyParser.json(),(req,res)=>{
 
 app.post('/Contrasena/:id',bodyParser.json(),(req,res)=>{
     var id=req.params.id;
-    const select_query1=`UPDATE usuarios SET password_usuario = '${req.body.contrasena}' WHERE rut_usuario = $1;`
+    const select_query1=`UPDATE usuarios SET password_usuario = '${req.body.password}' WHERE rut_usuario = $1;`
     client.query(select_query1,[id],(err,result)=>{ 
         console.log("Listado Pacientes")
         console.log(result);

@@ -1,4 +1,4 @@
-<app-diseno-admin></app-diseno-admin>
+<app-diseno-interfaz></app-diseno-interfaz>
 
 <body>
     
@@ -34,13 +34,21 @@
 
         <br>
         <div class="example-container">
-            <mat-form-field appearance="fill" [formGroup]="form">
-              <mat-label>Ingrese la nueva contraseña</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" formControlName="contrasena">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
+          <form [formGroup]="form">
+            <mat-form-field>
+              <input matInput placeholder="New password" formControlName="password" required>
+              <mat-error *ngIf="form.hasError('required', 'password')">
+                Please enter your newpassword
+              </mat-error>
             </mat-form-field>
+          
+            <mat-form-field>
+              <input matInput placeholder="Confirm password" formControlName="confirmPassword" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="form.hasError('notSame')">
+                Passwords do not match
+              </mat-error>  
+            </mat-form-field>
+          </form>
         </div>
         <div >
 
@@ -62,3 +70,5 @@
         </div>
     </div>
 </div>
+
+

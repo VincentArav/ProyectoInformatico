@@ -1,9 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup , Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup , Validators, FormGroupDirective, NgForm } from "@angular/forms";
 import { HttpClient ,HttpParams ,HttpHeaders} from '@angular/common/http';
 import { __await } from 'tslib';
 import { ActivatedRoute ,Router } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
+    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
+
+    return (invalidCtrl || invalidParent);
+  }
+}
 
 @Component({
   selector: 'app-modificar-datos',
@@ -13,13 +23,22 @@ import Swal from 'sweetalert2'
 export class ModificarDatosComponent implements OnInit {
   form: FormGroup;
   rut: any;
+  matcher = new MyErrorStateMatcher();
 
-  constructor(private http:HttpClient, private route:ActivatedRoute ,private router:Router) { }
+  constructor(private http:HttpClient, private route:ActivatedRoute ,private router:Router, private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      password: ['',[Validators.required]],
+      confirmPassword: ['']
+    }, {validator: this.checkPasswords});
+   }
+   checkPasswords(group: FormGroup){
+     let pass = group.controls.password.value;
+     let confirmPass = group.controls.confirmPassword.value;
+
+     return pass === confirmPass ? null : {notSame: true}
+   }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      contrasena: new FormControl('',[Validators.maxLength(200)]),
-    })
   }
   async Cambiar(){
     this.rut = parseInt(this.route.snapshot.paramMap.get('id'));

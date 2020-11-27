@@ -20,7 +20,9 @@ export class DisenoAdminComponent implements OnInit {
   onClick_Aprobar(){
     this.router.navigate(['/app-aprobar/'+this.rut])
   }
-
+  onClick_AddUser(){
+    this.router.navigate(['/app-registrar/'+this.rut])
+  }
   onClick_Cerrar(){
     this.router.navigate(['/app-inicio'])
   }

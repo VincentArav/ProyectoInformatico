@@ -42,9 +42,9 @@ app.post('/login', bodyParser.json(),(req,res)=>{
 
 /* Login Area de Gestion*/
 app.post('/login_adm', bodyParser.json(),(req,res)=>{
-    var rut=req.body.rut_usuario
+    var rut=req.body.rut_admin
     var contrasena=req.body.contrasena_login
-    const select_query= `SELECT * FROM usuarios WHERE rut_usuario=$1 AND password_usuario=$2`;
+    const select_query= `SELECT * FROM admin WHERE rut_admin=$1 AND contra_admin=$2`;
     client.query(select_query,[rut, contrasena],(err,result)=>{
         if(err){
             console.log(err);
@@ -244,10 +244,10 @@ app.post('/Aprobar',bodyParser.json(),(req,res)=>{//dar-alta-medica
     console.log("RETURN");
 });
 
-app.post('/Rechazar',bodyParser.json(),(req,res)=>{//dar-alta-medica
+app.post('/Rechazar',bodyParser.json(),(req,res)=>{
     var id=req.params.id;
-    const select_query1=`UPDATE orden SET etapa = 3 WHERE id = '${req.body.id_orden}';`//este parametro no lo esta leyendo bien
-    client.query(select_query1,(err,result)=>{ //al dejar id, le estoy pasando el valor
+    const select_query1=`UPDATE orden SET etapa = 3 WHERE id = '${req.body.id_orden}';`
+    client.query(select_query1,(err,result)=>{ 
         console.log("Listado Pacientes")
         console.log(result);
         if(err){
@@ -283,8 +283,42 @@ app.get('/ListadoOrdenes/:id',(req,res)=>{
     });
 });
 
+/* Registrar nuevo usuario */
+app.post('/NuevoUsuario/:id',bodyParser.json(),(req,res)=>{ 
+    var id = req.params.id;
+    console.log(req.body.password_U)
+    const select_query=`INSERT INTO usuarios (nombre_usuario, apellido_usuario, password_usuario, rut_usuario)
+    VALUES ('${req.body.nombre}','${req.body.apellido}','${req.body.rut}','${req.body.rut}') ON CONFLICT DO NOTHING `; 
+    client.query(select_query,(err,result)=>{
+        if(err){
+            console.log(err);
+            res.status(500).send('blablsl');
+        }else{
+            console.log(select_query);
+            //console.log(result);
+            return res.json(res.body);
+        }
+    });
+}); 
 
-
+app.post('/Contrasena/:id',bodyParser.json(),(req,res)=>{
+    var id=req.params.id;
+    const select_query1=`UPDATE usuarios SET password_usuario = '${req.body.contrasena}' WHERE rut_usuario = $1;`
+    client.query(select_query1,[id],(err,result)=>{ 
+        console.log("Listado Pacientes")
+        console.log(result);
+        if(err){
+            return res.send(err)
+            console.log("HAY UN ERROR")
+        }else{
+            console.log(result);
+            return res.json({
+                data: result
+        })
+        } 
+    });
+    console.log("RETURN");
+});
 
 
 

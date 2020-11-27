@@ -15,7 +15,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule, MatTabsModule } from '@angular/material';
-import {MatExpansionModule} from '@angular/material/expansion';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +33,8 @@ import { DisenoAdminComponent } from './admin/diseno-admin/diseno-admin.componen
 import { AprobarComponent } from './admin/aprobar/aprobar.component';
 import { MatSelectFilterModule } from 'mat-select-filter';
 import { MostrarOrdenComponent } from './admin/mostrar-orden/mostrar-orden.component';
-import { MostrarOrdenUsuarioComponent } from './usuario/mostrar-orden-usuario/mostrar-orden-usuario.component';
+import { RegistrarComponent } from './admin/registrar/registrar.component';
+import { ModificarDatosComponent } from './usuario/modificar-datos/modificar-datos.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import { MostrarOrdenUsuarioComponent } from './usuario/mostrar-orden-usuario/mo
     DisenoAdminComponent,
     AprobarComponent,
     MostrarOrdenComponent,
-    MostrarOrdenUsuarioComponent
+    RegistrarComponent,
+    ModificarDatosComponent
   ],
   imports: [
     BrowserModule,
@@ -87,8 +88,7 @@ import { MostrarOrdenUsuarioComponent } from './usuario/mostrar-orden-usuario/mo
     MatCheckboxModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatSelectFilterModule,
-    MatExpansionModule
+    MatSelectFilterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

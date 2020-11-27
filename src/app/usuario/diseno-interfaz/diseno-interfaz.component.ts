@@ -21,12 +21,11 @@ export class DisenoInterfazComponent implements OnInit {
   onClick_AddMaterial(){
     this.router.navigate(['/app-add-material/'+this.rut])}
 
+  onClick_Cambiar(){
+     this.router.navigate(['/app-modificar-datos/'+this.rut])}
+
   onClick_Cerrar(){
     this.router.navigate(['/app-inicio'])
-  }
-
-  onClick_Estado1(){
-    this.router.navigate(['/app-mostrar-orden-usuario/'+this.rut])
   }
 
 }

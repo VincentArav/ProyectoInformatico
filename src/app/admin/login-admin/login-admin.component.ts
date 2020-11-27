@@ -15,7 +15,7 @@ export class LoginAdminComponent implements OnInit {
 
   ngOnInit() {
     this.form=new FormGroup({
-    rut_usuario:new FormControl('', [Validators.required]),
+    rut_admin:new FormControl('', [Validators.required]),
     contrasena_login:new FormControl('',[Validators.required])
     }); 
   }
@@ -27,7 +27,7 @@ export class LoginAdminComponent implements OnInit {
       (res)=>{
         console.log(res.data.rowCount)
         if(res.data.rowCount==1){
-          this.router.navigate(['/app-desing-admin/'+res.data.rows[0].rut_usuario])
+          this.router.navigate(['/app-desing-admin/'+res.data.rows[0].rut_admin])
         }else{
           console.log("esto")
         }

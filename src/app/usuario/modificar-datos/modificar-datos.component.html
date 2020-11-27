@@ -56,7 +56,7 @@
 
                 <div class = "col" style="width: 33%;">
                     <form [formGroup]="form" style="text-align: right;">								
-                      <button id="boton_enviar" (click)='mostrar_Registro()' style=" vertical-align: bottom; width: 70%; color: white;">Aprobar</button>								
+                      <button id="boton_enviar" (click)='mostrar_Registro()'[disabled]="!form.valid" style=" vertical-align: bottom; width: 70%; color: rgb(61, 23, 231);">Aprobar</button>								
                     </form>
                 </div>
                 

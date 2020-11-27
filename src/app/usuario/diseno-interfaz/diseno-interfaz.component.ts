@@ -25,4 +25,8 @@ export class DisenoInterfazComponent implements OnInit {
     this.router.navigate(['/app-inicio'])
   }
 
+  onClick_Estado1(){
+    this.router.navigate(['/app-mostrar-orden-usuario/'+this.rut])
+  }
+
 }

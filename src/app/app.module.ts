@@ -34,6 +34,7 @@ import { DisenoAdminComponent } from './admin/diseno-admin/diseno-admin.componen
 import { AprobarComponent } from './admin/aprobar/aprobar.component';
 import { MatSelectFilterModule } from 'mat-select-filter';
 import { MostrarOrdenComponent } from './admin/mostrar-orden/mostrar-orden.component';
+import { MostrarOrdenUsuarioComponent } from './usuario/mostrar-orden-usuario/mostrar-orden-usuario.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MostrarOrdenComponent } from './admin/mostrar-orden/mostrar-orden.compo
     DesingAdminComponent,
     DisenoAdminComponent,
     AprobarComponent,
-    MostrarOrdenComponent
+    MostrarOrdenComponent,
+    MostrarOrdenUsuarioComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,9 @@
-import { Component, OnInit, OnDestroy,Input } from '@angular/core';
+import { Component, OnInit, OnDestroy,Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { HttpClient, HttpParams,HttpHeaders } from '@angular/common/http';
 import { __await } from 'tslib';
-import { Observable } from 'rxjs';
 import { ActivatedRoute,Router, NavigationStart } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 interface Material{
   value: string;
@@ -27,11 +26,14 @@ export class SolicitudComponent implements OnInit {
   public lista_materiales: Material[] = [];
   public lista_destino: Material[] = [];
   public filtrados: any;
+  panelOpenState = false;
+  indice = 0;
 
   arreglo = [];
   cantidad = [];
   material = [];
   especificaciones = [];
+  nombres_materiales = []
 
   destino_final: number;
 
@@ -41,10 +43,12 @@ export class SolicitudComponent implements OnInit {
     this.fecha= new Date().toLocaleDateString('es-CL');
     this.arreglo.push(1);
     this.rut = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.indice = this.arreglo.length;
   }
 
   ngOnInit() {
     this.material.push("");
+    console.log(this.lista_materiales)
   }
 
   anadir_material(){
@@ -52,18 +56,11 @@ export class SolicitudComponent implements OnInit {
     this.cantidad.push("");
     this.material.push("");
     this.especificaciones.push("");
+    this.nombres_materiales.push("");
     console.log(this.comentario_orden);
   }
 
   enviar_orden(){
-      console.log(this.material)
-      console.log(this.cantidad)
-      console.log(this.rut)
-      console.log(this.destino)
-      console.log(this.especificaciones)
-      console.log(this.comentario_orden)
-      console.log(this.lista_destino)
-      console.log(this.destino_final)
       this.http.post('http://localhost:8000/ADDSolicitud/', {
         rut:this.rut, 
         cantidad:this.cantidad, 
@@ -148,6 +145,21 @@ export class SolicitudComponent implements OnInit {
         location.reload();
       }
     })
+  }
+
+  eliminar_material(j: number) {
+    this.arreglo.splice(j,1);
+    this.cantidad.splice(j,1);
+    this.material.splice(j,1);
+    this.especificaciones.splice(j,1);
+  }
+
+  nombre_material(x:string) {
+    for (let i=0; i<this.lista_materiales.length; i++){
+      if(this.lista_materiales[i].value === x){
+        return this.lista_materiales[i].viewValue
+      }
+    }
   }
   
 

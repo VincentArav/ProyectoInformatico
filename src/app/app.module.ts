@@ -15,6 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule, MatTabsModule } from '@angular/material';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -84,7 +85,8 @@ import { MostrarOrdenComponent } from './admin/mostrar-orden/mostrar-orden.compo
     MatCheckboxModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatSelectFilterModule
+    MatSelectFilterModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

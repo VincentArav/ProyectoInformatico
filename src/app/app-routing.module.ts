@@ -13,6 +13,7 @@ import { DesingAdminComponent } from './admin/desing-admin/desing-admin.componen
 import { DisenoAdminComponent } from './admin/diseno-admin/diseno-admin.component';
 import { AprobarComponent } from './admin/aprobar/aprobar.component';
 import { MostrarOrdenComponent } from './admin/mostrar-orden/mostrar-orden.component';
+import { MostrarOrdenUsuarioComponent } from './usuario/mostrar-orden-usuario/mostrar-orden-usuario.component';
 import { RegistrarComponent } from './admin/registrar/registrar.component';
 import { ModificarDatosComponent } from './usuario/modificar-datos/modificar-datos.component';
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path:'app-add-material/:id',component:AddMaterialComponent},  
   {path:'app-aprobar/:id',component:AprobarComponent},
   {path:'app-mostrar-orden/:id',component:MostrarOrdenComponent},
+  {path:'app-mostrar-orden-usuario/:id',component:MostrarOrdenComponent},
   {path:'app-registrar/:id',component:RegistrarComponent},
   {path:'app-modificar-datos/:id',component:ModificarDatosComponent},
   

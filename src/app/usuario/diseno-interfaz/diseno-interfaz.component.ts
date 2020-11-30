@@ -24,6 +24,10 @@ export class DisenoInterfazComponent implements OnInit {
   onClick_Cambiar(){
      this.router.navigate(['/app-modificar-datos/'+this.rut])}
 
+  onClick_Estado(){
+    this.router.navigate(['/app-mostrar-orden-usuario/'+this.rut])
+  }
+
   onClick_Cerrar(){
     this.router.navigate(['/app-inicio'])
   }

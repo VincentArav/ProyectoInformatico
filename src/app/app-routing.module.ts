@@ -33,7 +33,7 @@ const routes: Routes = [
   {path:'app-add-material/:id',component:AddMaterialComponent},  
   {path:'app-aprobar/:id',component:AprobarComponent},
   {path:'app-mostrar-orden/:id',component:MostrarOrdenComponent},
-  {path:'app-mostrar-orden-usuario/:id',component:MostrarOrdenComponent},
+  {path:'app-mostrar-orden-usuario/:id',component:MostrarOrdenUsuarioComponent},
   {path:'app-registrar/:id',component:RegistrarComponent},
   {path:'app-modificar-datos/:id',component:ModificarDatosComponent},
   

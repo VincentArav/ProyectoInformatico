@@ -33,6 +33,7 @@ import { DisenoAdminComponent } from './admin/diseno-admin/diseno-admin.componen
 import { AprobarComponent } from './admin/aprobar/aprobar.component';
 import { MatSelectFilterModule } from 'mat-select-filter';
 import { MostrarOrdenComponent } from './admin/mostrar-orden/mostrar-orden.component';
+import { MostrarOrdenUsuarioComponent } from './usuario/mostrar-orden-usuario/mostrar-orden-usuario.component';
 import { RegistrarComponent } from './admin/registrar/registrar.component';
 import { ModificarDatosComponent } from './usuario/modificar-datos/modificar-datos.component';
 
@@ -52,6 +53,7 @@ import { ModificarDatosComponent } from './usuario/modificar-datos/modificar-dat
     DisenoAdminComponent,
     AprobarComponent,
     MostrarOrdenComponent,
+    MostrarOrdenUsuarioComponent,
     RegistrarComponent,
     ModificarDatosComponent
   ],

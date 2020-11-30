@@ -93,11 +93,14 @@
                       <mat-label>Cantidad</mat-label>
                       <input [(ngModel)]="cantidad[j]" matInput placeholder="Cantidad" type="number" name="cantidad">
                     </mat-form-field>
-                    
+
                     <mat-form-field appearance="fill" style="margin-left: 3%;">
                       <mat-label>Especificaciones</mat-label>
-                      <textarea matInput placeholder="Especificación opcional" [(ngModel)]="especificaciones[j]"></textarea>
+                      <input [(ngModel)]="especificaciones[j]" matInput placeholder="Especificaciones" type="string" name="cantidad">
                     </mat-form-field>
+
+                    <button mat-raised-button color="warn" (click)="eliminar_material(j)" style="margin-left: 3%;">Quitar Material</button>
+
                     <br>
                   
                   
@@ -107,6 +110,34 @@
                     <mat-label>Comentario</mat-label>
                     <input [(ngModel)]="comentario_orden" matInput placeholder="Comentario adicional" type="text" name="Comentario">
                   </mat-form-field>
+
+                  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Detalles de la Orden
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          
+                          <th scope="col">Material</th>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Especificaciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let i of arreglo; let j = index">
+                          <td>{{ nombre_material(material[j]) }}</td>
+                          <td>{{ cantidad[j] }}</td>
+                          <td>{{ especificaciones[j] }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </mat-expansion-panel>
 
               </div>
             </div>  

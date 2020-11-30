@@ -27,6 +27,8 @@ export class SolicitudComponent implements OnInit {
   public lista_materiales: Material[] = [];
   public lista_destino: Material[] = [];
   public filtrados: any;
+  panelOpenState = false;
+  indice = 0;
 
   arreglo = [];
   cantidad = [];
@@ -148,6 +150,21 @@ export class SolicitudComponent implements OnInit {
         location.reload();
       }
     })
+  }
+
+  eliminar_material(j: number) {
+    this.arreglo.splice(j,1);
+    this.cantidad.splice(j,1);
+    this.material.splice(j,1);
+    this.especificaciones.splice(j,1);
+  }
+
+  nombre_material(x:string) {
+    for (let i=0; i<this.lista_materiales.length; i++){
+      if(this.lista_materiales[i].value === x){
+        return this.lista_materiales[i].viewValue
+      }
+    }
   }
   
 

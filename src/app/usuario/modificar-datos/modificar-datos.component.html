@@ -36,16 +36,16 @@
         <div class="example-container">
           <form [formGroup]="form" style="text-align:center;">
             <mat-form-field style="margin-right: 5%;">
-              <input matInput placeholder="New password" formControlName="password" required>
+              <input matInput placeholder="Nueva contraseña" formControlName="password" required>
               <mat-error *ngIf="form.hasError('required', 'password')">
-                Please enter your new password.
+                Porfavor ingrese nueva contraseña.
               </mat-error>
             </mat-form-field>
           
             <mat-form-field>
-              <input matInput placeholder="Confirm password" formControlName="confirmPassword"  [errorStateMatcher]="matcher" style="width:fit-content;">
+              <input matInput placeholder="Confirmar contraseña" formControlName="confirmPassword"  [errorStateMatcher]="matcher" style="width:fit-content;">
                 <mat-error *ngIf="form.hasError('notSame')">
-                Passwords do not match.
+                Las contraseñas no son iguales.
               </mat-error>  
             </mat-form-field>
           </form>

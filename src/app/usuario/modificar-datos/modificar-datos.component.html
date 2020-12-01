@@ -25,7 +25,7 @@
         </style>
 
 <div i="contenedorRevisar-TM">
-    <div class="wrapper" style="background-color: rgb(240, 240, 240); width: 70%;">
+    <div class="wrapper border border-gray-400 rounded-lg" style="background-color: rgb(240, 240, 240); width: 40%;">
 
         <div class="title">
             <h1 style="color: black;">Cambio de Contraseña</h1>
@@ -34,35 +34,35 @@
 
         <br>
         <div class="example-container">
-          <form [formGroup]="form">
-            <mat-form-field>
+          <form [formGroup]="form" style="text-align:center;">
+            <mat-form-field style="margin-right: 5%;">
               <input matInput placeholder="New password" formControlName="password" required>
               <mat-error *ngIf="form.hasError('required', 'password')">
-                Please enter your newpassword
+                Please enter your new password.
               </mat-error>
             </mat-form-field>
           
             <mat-form-field>
-              <input matInput placeholder="Confirm password" formControlName="confirmPassword" [errorStateMatcher]="matcher">
+              <input matInput placeholder="Confirm password" formControlName="confirmPassword"  [errorStateMatcher]="matcher" style="width:fit-content;">
                 <mat-error *ngIf="form.hasError('notSame')">
-                Passwords do not match
+                Passwords do not match.
               </mat-error>  
             </mat-form-field>
           </form>
         </div>
         <div >
 
-            <div class="row" style="">
+            <div class="row" style="margin-top: 6%;">
 
-                <div class = "col" style="width: 33%;">
-                    <form [formGroup]="form" style="text-align: right;">								
-                      <button id="boton_enviar" (click)='mostrar_Registro()'[disabled]="!form.valid" style=" vertical-align: bottom; width: 70%; color: rgb(61, 23, 231);">Aprobar</button>								
+                <div class = "col" style="width: 50%;">
+                    <form [formGroup]="form" style="text-align: center  ;">								
+                      <button id="boton_enviar" (click)='mostrar_Registro()'[disabled]="!form.valid" style=" vertical-align: bottom; width: 40%; color: rgb(255, 255, 255);">Aprobar</button>								
                     </form>
                 </div>
                 
-                <div class = "col" style="width: 33%;">
+                <div class = "col" style="width: 50%;">
                     <form [formGroup]="form" style="text-align: center;">								
-                        <button id="boton_enviar" (click)='mostrar_cancelar()' style=" vertical-align: bottom; width:70%; background-color: rgb(233, 23,23); border: 2px solid rgb(110, 20, 20); color: white;" >Rechazar</button>								
+                        <button id="boton_enviar" (click)='mostrar_cancelar()' style=" vertical-align: bottom; width:40%; background-color: rgb(233, 23,23); border: 2px solid rgb(110, 20, 20); color: white;" >Rechazar</button>								
                     </form>
                 </div>
 

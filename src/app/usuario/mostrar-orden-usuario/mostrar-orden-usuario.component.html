@@ -23,6 +23,7 @@
         .fa-anchor,.fa-coffee {font-size:200px}
         .w3-2019-evening-blue{color:#fff;background-color:#4f5055}
         </style>
+
 <div i="contenedorRevisar-TM">
     <div class="wrapper" style="margin-top: 0%;">
         <div class="title">
@@ -50,11 +51,11 @@
         </div>
     </div>
 
-<div class="errorMensaje">
-	<div *ngIf ="auxiliar && Lista_1.data.length==0 "class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-	  <h1 class="w3-margin w3-xlarge">NO EXISTEN REGISTROS</h1>
-	</div>
-  </div>
+        <div *ngIf ="auxiliar && Lista_1.data.length==0 "class="Tabla-RTM" style="background-color:rgb(240, 240, 240); width: 40%; text-align: center; margin-left: 15%; border-radius: 5px; border: 1px solid rgb(60, 60, 60);">
+            <h1 class="w3-margin w3-xlarge" style="color: black; font-weight: bold;"> NO SE ENCONTRARON SOLICITUDES</h1>
+        </div>
+
+
 <div *ngIf="auxiliar && Lista_1.data.length>0">
     <mat-table [dataSource]="Lista_1.data" class="Tabla-RTM" style="background-color:rgb(240, 240, 240); width: 60%; text-align: center; margin-left: 5.5%; margin-top: 0.0322%; border-radius: 5px; border: 1px solid rgb(60, 60, 60);">
         <ng-container matColumnDef="ID">

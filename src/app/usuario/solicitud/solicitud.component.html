@@ -73,6 +73,8 @@
                     </mat-select>
                   </mat-form-field>
 
+                  <div style="margin-bottom: 3%; height: 1px; border: 1px solid rgba(78, 77, 77, 0.397); border-radius: 1px;"></div>
+
 
                   <section *ngFor="let i of arreglo; let j = index" style=" width: 100%;">
                       
@@ -99,11 +101,11 @@
                       <input [(ngModel)]="especificaciones[j]" matInput placeholder="Especificaciones" type="string" name="cantidad">
                     </mat-form-field>
 
-                    <button mat-raised-button color="warn" (click)="eliminar_material(j)" style="margin-left: 3%;">Quitar Material</button>
+                    <button class="pull-right mt-3" mat-raised-button color="warn"  (click)="eliminar_material(j)" style="margin-left: 3%; padding: 0.8%; vertical-align: middle; font-size: 18px; %;"><h4>Quitar Material</h4></button>
 
                     <br>
                   
-                  
+                    <div style="margin-bottom: 3%; height: 1px; border: 1px solid rgba(78, 77, 77, 0.397); border-radius: 1px;"></div>
                   </section>
 
                   <mat-form-field appearance="fill" style="margin-top: 2%;">
@@ -115,7 +117,7 @@
                        (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        Detalles de la Orden
+                        <h2>Detalles de la Orden</h2>
                       </mat-panel-title>
                     </mat-expansion-panel-header>
                     
@@ -123,16 +125,16 @@
                       <thead>
                         <tr>
                           
-                          <th scope="col">Material</th>
-                          <th scope="col">Cantidad</th>
-                          <th scope="col">Especificaciones</th>
+                          <th scope="col"><h4 style="font-weight: bold;">Material</h4></th>
+                          <th scope="col"><h4 style="font-weight: bold;">Cantidad</h4></th>
+                          <th scope="col"><h4 style="font-weight: bold;">Especificaciones</h4></th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let i of arreglo; let j = index">
-                          <td>{{ nombre_material(material[j]) }}</td>
-                          <td>{{ cantidad[j] }}</td>
-                          <td>{{ especificaciones[j] }}</td>
+                          <td><h5>{{ nombre_material(material[j]) }}</h5></td>
+                          <td><h5>{{ cantidad[j] }}</h5></td>
+                          <td><h5>{{ especificaciones[j] }}</h5></td>
                         </tr>
                       </tbody>
                     </table>
@@ -141,15 +143,15 @@
 
               </div>
             </div>  
-            <button mat-button (click)="anadir_material()" style="background-color: rgb(45, 192, 53); margin-right: 2%; width: 15%; border: 1px solid darkgreen;">
+            <button mat-button (click)="anadir_material()" style="background-color: rgb(45, 192, 53); margin-right: 2%; margin-top: 2%; width: 15%; border: 1px solid darkgreen; padding: 1%">
               <h4 style="font-st; color: white;">Añadir Material</h4>
             </button>
 
-            <button mat-button (click)="mostrar_cancelar()" style="background-color: rgb(233, 23, 23); border: 1px solid rgb(110, 23, 23); width: 15%">
+            <button mat-button (click)="mostrar_cancelar()" style="background-color: rgb(233, 23, 23); border: 1px solid rgb(110, 23, 23); width: 15%; padding: 1%">
               <h4 style="color: white;">Cancelar</h4>
             </button>       
 
-            <button class="pull-right" mat-button (click)="mostrar_Registro()" style="background-color: rgb(28, 113, 240); margin-right: 20px; width: 25%; border: 1px solid rgb(18, 18, 223);">
+            <button class="pull-right" mat-button (click)="mostrar_Registro()" style="background-color: rgb(28, 113, 240); margin-top: 2%; margin-right: 20px; width: 15%; border: 1px solid rgb(18, 18, 223); padding: 1%;">
               <h4 style="color: white;">Enviar Orden</h4>
             </button>
 

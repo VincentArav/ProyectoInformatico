@@ -29,5 +29,9 @@ export class DisenoAdminComponent implements OnInit {
   onClick_Estado(){
     this.router.navigate(['/app-mostrar-orden/'+this.rut])
   }
+  onClick_AddProject(){
+    this.router.navigate(['/app-agregar-proyecto/'+this.rut])
+  }
+
 
 }

@@ -37,6 +37,7 @@ import { MostrarOrdenComponent } from './admin/mostrar-orden/mostrar-orden.compo
 import { MostrarOrdenUsuarioComponent } from './usuario/mostrar-orden-usuario/mostrar-orden-usuario.component';
 import { RegistrarComponent } from './admin/registrar/registrar.component';
 import { ModificarDatosComponent } from './usuario/modificar-datos/modificar-datos.component';
+import { AgregarProyectoComponent } from './admin/agregar-proyecto/agregar-proyecto.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ModificarDatosComponent } from './usuario/modificar-datos/modificar-dat
     MostrarOrdenComponent,
     MostrarOrdenUsuarioComponent,
     RegistrarComponent,
-    ModificarDatosComponent
+    ModificarDatosComponent,
+    AgregarProyectoComponent
   ],
   imports: [
     BrowserModule,

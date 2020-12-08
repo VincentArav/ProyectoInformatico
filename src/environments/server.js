@@ -320,6 +320,25 @@ app.post('/Contrasena/:id',bodyParser.json(),(req,res)=>{
     console.log("RETURN");
 });
 
+app.post('/agregarLugar', bodyParser.json(), (req,res)=>{
+    let body = req.body;
+    let nombre = body.nombre;
+    let area = body.area;
+
+    const post = `INSERT INTO destino (nombre, area) VALUES('${nombre}', '${area}')`
+    client.query(post, (err, result)=>{
+        if(err){
+            console.log("HAY UN ERROR")
+            return res.send(err);
+        }else{
+            console.log(result);
+            return res.json({
+                data: result
+        })
+        } 
+    })
+})
+
 
 
 

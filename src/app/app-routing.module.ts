@@ -16,6 +16,7 @@ import { MostrarOrdenComponent } from './admin/mostrar-orden/mostrar-orden.compo
 import { MostrarOrdenUsuarioComponent } from './usuario/mostrar-orden-usuario/mostrar-orden-usuario.component';
 import { RegistrarComponent } from './admin/registrar/registrar.component';
 import { ModificarDatosComponent } from './usuario/modificar-datos/modificar-datos.component';
+import { AgregarProyectoComponent } from './admin/agregar-proyecto/agregar-proyecto.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path:'app-mostrar-orden-usuario/:id',component:MostrarOrdenUsuarioComponent},
   {path:'app-registrar/:id',component:RegistrarComponent},
   {path:'app-modificar-datos/:id',component:ModificarDatosComponent},
+  {path:'app-agregar-proyecto/:id',component:AgregarProyectoComponent},
   
   
 ];

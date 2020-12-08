@@ -27,7 +27,7 @@ export class AgregarProyectoComponent implements OnInit {
     {headers: new HttpHeaders({'Content-Type':'application/json'})}).subscribe(
       (response)=>{
         console.log(response);
-        //location.reload();
+        location.reload();
            
       }
     ) 

@@ -283,6 +283,27 @@ app.get('/ListadoOrdenes/:id',(req,res)=>{
     });
 });
 
+app.get('/ListadoOrdenesUsuario/:id',(req,res)=>{
+    var id =req.params.id;
+    var rut = '19500756';//pasar rut dinamicamente
+    console.log(id);
+    const select_query2 =`SELECT orden.id, persona.nombre, persona.apellido, lugar.nombre_l, to_char(orden.fecha,'YYYY-MM-DD') as fecha 
+    FROM orden JOIN persona ON orden.creador = persona.rut JOIN lugar ON orden.destino = lugar.id_l WHERE orden.etapa = $1 AND persona.rut = $2;`
+    client.query(select_query2,[id, rut],(err,result)=>{
+          console.log(result);
+        if(err){
+            return res.send(err)
+        }else{
+           console.log(select_query2);
+            console.log(result);  
+                     
+            return res.json({
+                data: result.rows
+            })
+        }
+    });
+});
+
 /* Registrar nuevo usuario */
 app.post('/NuevoUsuario/:id',bodyParser.json(),(req,res)=>{ 
     var id = req.params.id;

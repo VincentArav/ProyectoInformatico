@@ -27,7 +27,7 @@ export class LoginAdminComponent implements OnInit {
       (res)=>{
         console.log(res.data.rowCount)
         if(res.data.rowCount==1){
-          this.router.navigate(['/app-desing-admin/'+res.data.rows[0].rut_admin])
+          this.router.navigate(['/app-aprobar/'+res.data.rows[0].rut_admin])
         }else{
           console.log("esto")
         }

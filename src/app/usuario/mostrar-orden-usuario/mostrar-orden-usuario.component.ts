@@ -27,6 +27,7 @@ export class MostrarOrdenUsuarioComponent implements OnInit {
   mostrarError:boolean;
   rut_id: any;
   id: any;
+  rut = "19500756";
   public auxiliar:boolean;
 
   public Lista: any;
@@ -41,21 +42,29 @@ export class MostrarOrdenUsuarioComponent implements OnInit {
     this.http.get('http://localhost:8000/ordenes').toPromise()
     console.log(this.Lista)
   }
+
+
   ngOnInit() {    
     this.auxiliar = false;
     this.Form2 = new FormGroup({
       id_orden: new FormControl('', [Validators.required]),    
     });
+
   }
   public onSubmit(){
     this.auxiliar = true;
     this.id= this.Form2.value.id_orden;
     this.getListado();
   }
+
   async getListado(){
     this.auxiliar = true;
     let params = new HttpParams().set("id_orden", this.id);
-    this.Lista_1 = await this.http.get('http://localhost:8000/ListadoOrdenes/'+this.id,{headers: new HttpHeaders({
+
+    params.append("rut_persona",this.rut);
+    
+    console.log()
+    this.Lista_1 = await this.http.get('http://localhost:8000/ListadoOrdenesUsuario/'+this.id,{headers: new HttpHeaders({
     'Content-Type':'application/json'  
   }), params : params}).toPromise();
   console.log(this.Lista_1)

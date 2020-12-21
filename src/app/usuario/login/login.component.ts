@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       (res)=>{
         console.log(res.data.rowCount)
         if(res.data.rowCount==1){
-          this.router.navigate(['/app-desing/'+res.data.rows[0].rut_usuario])
+          this.router.navigate(['/app-solicitud/'+res.data.rows[0].rut_usuario])
         }else{
           console.log("esto")
         }

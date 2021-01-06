@@ -360,7 +360,36 @@ app.post('/agregarLugar', bodyParser.json(), (req,res)=>{
     })
 })
 
+app.get('/enviarCorreo', bodyParser.json(), (req,res)=>{
+    let body = req.body;
+    let nombre = body.nombre;
+    let area = body.area;
 
+    var nodemailer = require('nodemailer');
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'gematproyecto@gmail.com',
+            pass: '4321abcd'
+        }
+    });
+
+    var mailOptions = {
+        from: 'gematproyecto@gmail.com',
+        to: 'joaquin.soto.videla@gmail.com',
+        subject: 'Prueba',
+        text: 'That was easy!'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+})
 
 
 

@@ -167,5 +167,9 @@ export class SolicitudComponent implements OnInit {
     }
   }
   
+  mandar_correo() {
+    this.http.get(`http://localhost:8000/enviarCorreo`).toPromise();
+  }
+
 
 }

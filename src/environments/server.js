@@ -360,6 +360,42 @@ app.post('/agregarLugar', bodyParser.json(), (req,res)=>{
     })
 })
 
+app.get('/obtenerLugares',(req,res)=>{
+    const select_query2 =`SELECT * FROM destino`
+    client.query(select_query2,(err,result)=>{
+          console.log(result);
+        if(err){
+            return res.send(err)
+        }else{
+           console.log(select_query2);
+            console.log(result);  
+                     
+            return res.json({
+                data: result.rows
+            })
+        }
+    });
+});
+
+app.delete('/eliminarLugar/:id', bodyParser.json(),(req,res)=>{
+
+    let id = req.params.id;
+    console.log(id);
+
+    const post = `DELETE FROM destino WHERE id = ${id}`
+    client.query(post, (err, result)=>{
+        if(err){
+            console.log("HAY UN ERROR")
+            return res.send(err);
+        }else{
+            console.log(result);
+            return res.json({
+                ok: true
+        })
+        } 
+    })
+})
+
 app.get('/enviarCorreo', bodyParser.json(), (req,res)=>{
     let body = req.body;
     let nombre = body.nombre;

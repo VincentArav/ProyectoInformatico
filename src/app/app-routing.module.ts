@@ -17,6 +17,7 @@ import { MostrarOrdenUsuarioComponent } from './usuario/mostrar-orden-usuario/mo
 import { RegistrarComponent } from './admin/registrar/registrar.component';
 import { ModificarDatosComponent } from './usuario/modificar-datos/modificar-datos.component';
 import { AgregarProyectoComponent } from './admin/agregar-proyecto/agregar-proyecto.component';
+import { ListarLugaresComponent } from './admin/listar-lugares/listar-lugares.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path:'app-registrar/:id',component:RegistrarComponent},
   {path:'app-modificar-datos/:id',component:ModificarDatosComponent},
   {path:'app-agregar-proyecto/:id',component:AgregarProyectoComponent},
+  {path:'app-obtener-lugar/:id',component:ListarLugaresComponent},
   
   
 ];

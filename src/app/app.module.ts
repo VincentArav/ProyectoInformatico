@@ -38,6 +38,7 @@ import { MostrarOrdenUsuarioComponent } from './usuario/mostrar-orden-usuario/mo
 import { RegistrarComponent } from './admin/registrar/registrar.component';
 import { ModificarDatosComponent } from './usuario/modificar-datos/modificar-datos.component';
 import { AgregarProyectoComponent } from './admin/agregar-proyecto/agregar-proyecto.component';
+import { ListarLugaresComponent } from './admin/listar-lugares/listar-lugares.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AgregarProyectoComponent } from './admin/agregar-proyecto/agregar-proye
     MostrarOrdenUsuarioComponent,
     RegistrarComponent,
     ModificarDatosComponent,
-    AgregarProyectoComponent
+    AgregarProyectoComponent,
+    ListarLugaresComponent
   ],
   imports: [
     BrowserModule,

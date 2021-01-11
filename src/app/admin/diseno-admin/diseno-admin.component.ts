@@ -32,6 +32,8 @@ export class DisenoAdminComponent implements OnInit {
   onClick_AddProject(){
     this.router.navigate(['/app-agregar-proyecto/'+this.rut])
   }
-
+  onClick_DeleteProject(){
+    this.router.navigate(['/app-obtener-lugar/'+this.rut])
+  }
 
 }

@@ -187,7 +187,7 @@ app.post('/ADDSolicitud/',bodyParser.json(),(req,res)=>{
 
 /* Aprobar solicitud */
 app.get('/ordenes',(req,res)=>{//REVISAR TRATAMIENTO 
-    const select_query2=`SELECT orden.id, persona.nombre, persona.apellido FROM orden JOIN persona ON orden.creador = persona.rut WHERE orden.etapa = 1 ORDER BY orden.id ASC`;//este parametro no lo esta leyendo bien
+    const select_query2=`SELECT orden.id, to_char(orden.fecha,'YYYY-MM-DD') as fecha, usuarios.nombre_usuario, usuarios.apellido_usuario FROM orden JOIN usuarios ON orden.creador = usuarios.rut_usuario WHERE orden.etapa = 1 ORDER BY orden.id ASC`;//este parametro no lo esta leyendo bien
     client.query(select_query2,(err,result)=>{ //al dejar id, le estoy pasando el valor
         console.log("HOLI")
         //console.log(result);
@@ -396,10 +396,16 @@ app.delete('/eliminarLugar/:id', bodyParser.json(),(req,res)=>{
     })
 })
 
-app.get('/enviarCorreo', bodyParser.json(), (req,res)=>{
-    let body = req.body;
-    let nombre = body.nombre;
-    let area = body.area;
+app.post('/enviarCorreo', bodyParser.json(), (req,res)=>{
+    let datos = req.body;
+    let rut = datos.rut;
+    let orden = datos.orden;
+    let ordenes = datos.orden_;
+    let materiales = datos.materiales;
+    let destino = datos.destino;
+    let especificaciones = datos.especificaciones;
+    let comentario = datos.comentario_orden;
+    console.log(rut);
 
     var nodemailer = require('nodemailer');
 
@@ -413,9 +419,10 @@ app.get('/enviarCorreo', bodyParser.json(), (req,res)=>{
 
     var mailOptions = {
         from: 'gematproyecto@gmail.com',
-        to: 'joaquin.soto.videla@gmail.com',
-        subject: 'Prueba',
-        text: 'That was easy!'
+        to: 'ldelafuente80@gmail.com',
+        subject: 'Orden ' + `${orden}`,
+        text: 'Favor comprar lo adjunto. ',
+        html: 'Favor, comprar lo adjunto a la orden '+`${orden}`,
     };
 
     transporter.sendMail(mailOptions, function(error, info){

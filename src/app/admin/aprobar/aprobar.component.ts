@@ -5,23 +5,37 @@ import { __await } from 'tslib';
 import { ActivatedRoute ,Router } from '@angular/router';
 import Swal from 'sweetalert2'
 
+interface Material{
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-aprobar',
   templateUrl: './aprobar.component.html',
   styleUrls: ['./aprobar.component.css']
 })
+
 export class AprobarComponent implements OnInit {
   Form2 : FormGroup; /* Esta variable sera la principal donde se agrupen el resto de variables que seran utilizadas en el HTML*/
   mostrarMensaje:boolean;
   mostrarError:boolean;
   rut_id: any;
   id: any;
+  orden: any;
   public auxiliar:boolean;
+  public lista_ordenes: Material[] = [];
+  public filtrados: any;
+
+  arreglo = [];
+  orden_ = [];
+  material = [];
+  especificaciones = [];
 
   public Lista: any; /* Variable donde se pueden almacenar varios datos */
   public Lista_1: any;
   displayedColumns: string[] = ['ID',  'NombreCompleto', 'Material', 'Cantidad', 'Comentario', 'Fecha'] /* Es el nombre de las columnas*/
+  
   constructor(private http:HttpClient, private route:ActivatedRoute ,private router:Router) { /* Colocarlo siempre en general */
     this.getOrdenes();
   }
@@ -37,7 +51,13 @@ export class AprobarComponent implements OnInit {
   async getOrdenes(){ /* Consulta estandar para traer datos desde la BD, despues :8000/ el nombre que le das en la consulta del server.js */
     this.Lista = await
     this.http.get('http://localhost:8000/ordenes').toPromise()
-    console.log(this.Lista)
+    console.log(this.Lista);
+    let aux: any;
+    aux = this.Lista.data;
+    for(let i of aux){
+      this.lista_ordenes.push({value: i.id, viewValue: i.nombre});
+    }
+    this.filtrados = this.lista_ordenes.slice();
   }
   
   public onSubmit(){
@@ -52,6 +72,19 @@ export class AprobarComponent implements OnInit {
     'Content-Type':'application/json'  
   }), params : params}).toPromise();
   console.log(this.Lista_1)
+  }
+
+  async correo(){
+    this.http.post(`http://localhost:8000/enviarCorreo`,{ 
+      orden: this.Form2.value.id_orden,
+      ordenes:this.orden_, 
+      materiales:this.material,
+      especificaciones:this.especificaciones,
+    }).subscribe(
+      (response)=>{
+        console.log(response);
+      }
+    ) 
   }
 
   async Aprobar(){
@@ -109,6 +142,7 @@ export class AprobarComponent implements OnInit {
         }).then((result1)=>{
           if(result1.value){
             this.Aprobar();
+            this.correo();
           }
         })
       }

@@ -41,7 +41,7 @@
                             <mat-select formControlName="id_orden"  placeholder= "N° de Orden">
                                 <mat-option>None</mat-option>
                                 <mat-option *ngFor="let option of Lista.data.rows" [value]="option.id">
-                                    {{option.id}}
+                                    {{option.id}} / {{option.nombre_usuario}} {{option.apellido_usuario}} / {{option.fecha}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
